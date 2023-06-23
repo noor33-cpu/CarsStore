@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>تفاصيل السيارة</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="Cars.html">Cars</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- <main> -->
+    <div class="content1">
+      <h2 id="carName"></h2>
+      <img id="carImage" height="200px" width="300px">
+      <br><br>
+      <table class="midle">
+        <tr>
+          <th>الإيجار اليومي:</th>
+          <td id="dailyRental"></td>
+        </tr>
+        <tr>
+          <th>رسم إعادة البناء:</th>
+          <td id="rebuildFee"></td>
+        </tr>
+        <tr>
+          <th>الضريبة:</th>
+          <td id="tax"></td>
+        </tr>
+        <tr>
+          <th>التكلفة الإجمالية:</th>
+          <td id="totalCost"></td>
+        </tr>
+      </table>
+      <br>
+
+
+
+      <input type='checkbox' onclick="toggleAdditionalContent()"> <label>ﻣﺘﺎﺑﻌﺔ</label>
+    <div id="additionalContent" style="display: none;">
+
+      <form onsubmit="return validateForm()">
+        <label>اﻻﺳﻢ اﻟﻜﺎﻣﻞ</label>
+        <input type="text" id="fullName" pattern="[ا-ﻱ].{3,30}" required ><br>
+      
+        <label>اﻟﺮﻗﻢ اﻟﻮﻃﻨﻲ</label>
+        <input type="text" id="nationalID" minlength="11" maxlength="11" pattern="[01]{1}[0-9]{10}" required><br>
+      
+        <label>ﺗﺎﺭﻳﺦ اﻟﻮﻻﺩﺓ</label>
+        <input type="date" id="birthDate" required><br>
+      
+        <label>ﺭﻗﻢ اﻟﻤﻮﺑﺎﻳﻞ</label>
+        <input type="tel"   id="phoneNumber"pattern="09[3-9][0-9]{7}" required><br>
+      
+        <label>اﻟﺒﺮﻳﺪ اﻹﻟﻜﺘﺮﻭﻧﻲ</label>
+        <input type="email" id="email" required><br>
+      
+        <label>ﻋﺪﺩ اﻷﻳﺎﻡ/اﻷﺳﺎﺑﻴﻊ/اﻟﺸﻬﻮﺭ اﻟﻤﻄﻠﻮﺑﺔ</label>
+        <input type="number" id="rentalDuration" min="1" required><br>
+      
+        <label>Captcha</label>
+        <div id="captcha" style="font-size: 24pt;"></div>
+          <input type="text" id="userInput">
+          <p id="result"></p>
+          <button type="button" onclick="checkCaptcha()">تحقق من الكود</button>
+          <br>
+          <br>
+        <button type="submit">ﺗﻘﺪﻳﻢ اﻟﻄﻠﺐ</button>
+        </form>
+      </div>
+      <br>
+      <button onclick="goBack()">العودة</button>
+
+    </div>
+  <!-- </main> -->
+  <script>
+    window.onload = function () {
+      var carId = getCarIdFromUrl();
+
+      if(carId == null){
+      window.open("Cars.html", '_self');
+      }
+
+      var carName = (carId == '1') ? 'Toyota Camry' : (carId == '2') ? 'Ford Mustang' : (carId == '3') ? 'Ford Ranger Raptor' : (carId == '4') ? 'Toyota Prius Prime' : (carId == '5') ? 'Hyundai Elantra' : (carId == '6') ? 'Hyundai Elantra' : (carId == '7') ? 'Mitsubishi Mirage' : (carId == '8') ? 'Kia Forte' : ((carId == '9') ? 'Nissan Sentra' : 'Mazda 3')? 'Kia sportage' : ((carId == '55') );
+      var carImage;
+switch(carId) {
+  case '1':
+    carImage = 'img/car1-1.jpg';
+    break;
+  case '2':
+    carImage = 'img/car2-1.jpg';
+    break;
+  case '3':
+    carImage = 'img/car3-1.jpg';
+    break;
+  case '4':
+    carImage = 'img/car4-1.jpg';
+    break;
+  case '5':
+    carImage = 'img/car5-1.jpg';
+    break;
+  case '6':
+    carImage = 'img/car6-1.jpg';
+    break;
+  case '7':
+    carImage = 'img/car7-1.jpg';
+    break;
+  case '8':
+    carImage = 'img/car8-1.jpg';
+    break;
+  case '9':
+    carImage = 'img/car9-1.jpg';
+    break;
+  case '55':
+    carImage = 'img/car55-1.jpg';
+    break;
+  default:
+    carImage = null; // 
+}      var dailyRental = (carId == '1') ? 50000 : (carId == '2') ? 70000 : (carId == '3') ? 170000 : (carId == '4') ? 140000 : (carId == '5') ? 45000 : (carId == '6') ? 120000 : (carId == '7') ? 100000 : (carId == '8') ? 125000 : ((carId == '9') ? 75000 : 900000);
+      var rebuildFee = (dailyRental * 0.01).toFixed(0);
+      var tax = (dailyRental * 0.05).toFixed(0);
+      var totalCost = parseInt(dailyRental) + parseInt(rebuildFee) + parseInt(tax);
+
+      document.getElementById('carName').innerHTML = carName;
+      document.getElementById('carImage').src = carImage;
+      document.getElementById('dailyRental').innerHTML = dailyRental + ' ل.س';
+      document.getElementById('rebuildFee').innerHTML = rebuildFee + ' ل.س (1% من الإيجار اليومي)';
+      document.getElementById('tax').innerHTML = tax + ' ل.س (5% من الإيجار اليومي)';
+      document.getElementById('totalCost').innerHTML = totalCost + ' ل.س';
+    }
+
+    function goBack() {
+      window.history.back();
+    }
+
+    function getCarIdFromUrl() {
+      var urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('carId');
+    }
+  </script>
+
+  <script src="assets/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,127 @@
+body {
+  box-sizing: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+  }
+  
+  header {
+    background-color: #008080;
+    padding: 20px;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  nav li {
+    margin-right: 20px;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .content {
+    max-width: 800px;
+    padding: 50px;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    color: #008080;
+    margin-top: 30px;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 10px;
+  }
+  
+  a {
+    color: #008080;
+  }
+  
+  p {
+    line-height: 1.5;
+  }
+  
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 20px;
+}
+th, td {
+    border: 1px solid #ddd;
+    text-align: center;
+    padding: 8px;
+    font-weight: bold;
+}
+th {
+    background-color: #f2f2f2;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.midle{
+  margin-left: 40%;
+}
+#carImage{
+  margin-left: 60%;
+}
+#carName{
+  margin-left: 60%;
+}
+.design{
+  text-align: center;
+}
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+input[type="date"],
+input[type="text"]
+ {
+  border: 2px solid rgb(15, 173, 212);
+  border-radius: 5px;
+  padding: 10px;
+  background-color: rgb(255, 255, 255); 
+  margin-left: 75%;
+}
+.content1{
+  max-width: 800px;
+  padding: 50px;
+  text-align: right;
+}
+.pargraph{
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.content2{
+  height: 90%;
+}
+.con{
+  margin-top: -15%;
+}
